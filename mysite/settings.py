@@ -24,7 +24,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '=!6=e%+#83h+db+qfx5v#(ml(0*3e^ig$w5$n5--vnn-v_snig'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'blog',
+    'blog'
 ]
 
 MIDDLEWARE = [
@@ -76,15 +76,9 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'db70iam8i3pbnl',
-        'USER': 'izspunjxkpxjtq',
-        'PASSWORD': 'bd4026d23c3e44f198c6022ec66027e5474b031cfeb79c9bcf9fd8610fff5a98',
-        'HOST': 'ec2-54-163-232-171.compute-1.amazonaws.com',
-        'PORT': '5432',
-
-    }
+    'default': dict(ENGINE='django.db.backends.postgresql', NAME=os.path.join(BASE_DIR, 'db70iam8i3pbnl'),
+                    USER='izspunjxkpxjtq', PASSWORD='bd4026d23c3e44f198c6022ec66027e5474b031cfeb79c9bcf9fd8610fff5a98',
+                    HOST='ec2-54-163-232-171.compute-1.amazonaws.com', PORT='5432')
 }
 
 
@@ -150,4 +144,3 @@ try:
     from .local_settings import *
 except ImportError:
     pass
-
